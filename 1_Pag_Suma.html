@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suma</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;1,200;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="sub_contenedor">
+            <a href="./_Pagina_Inicial.html"><img src="./imagenes/devolver.png" alt="" class="imagen_devolver"></a>
+            <h1 class="titulo">SUMA</h1>
+            <form action="" class="formulario" name="form" id="form1">
+                <input type="text" name="numero_1" id="numero_1_Suma" class="numeros" disabled="">
+                <img src="./imagenes/suma1.png" alt="suma" class="signos">
+                <input type="text" name="numero_2" id="numero_2_Suma" class="numeros" disabled="">
+                <img src="./imagenes/igual.png" alt="igual" class="signos">
+                <input type="text" name="numero_resultado" id="numero_resultado_Suma" class="numeros" disabled="">
+            </form>
+
+            <div class="mini_contenedor">
+                <input type="button" name="activar" id="boton_iniciar" value="INICIAR JUEGO" class="botones">
+                <input type="button" name="siguiente_Operacion" id="siguiente_Operacion" value="COMPROBAR" class="botones" disabled="">
+                <div class="contador_corazon">
+                    <input type="text" name="contador" id="contador" disabled="">
+                    <img src="./imagenes/Corazon.png" alt="corazon" class="corazonVida">
+                </div>
+                <input type="text" name="score" id="score">
+            </div>
+            <div class="reiniciar">
+                <input type="button" value="REINICIAR" id="reiniciar" class="botones" onclick="location.href = location.href">
+            </div>
+        </div>
+    </div>
+    <script>
+
+        var sumando_1 = document.getElementById("numero_1_Suma");
+        var sumando_2 = document.getElementById("numero_2_Suma");
+        var operacion_Sumando = document.getElementById("numero_resultado_Suma");
+        var vidas = 3;
+        var contadorVidas = document.getElementById("contador");
+        contadorVidas.value = "x" + vidas;
+
+        var score = 0;
+        var scoreInput = document.getElementById("score");
+        document.getElementById("score").disabled=true;
+
+
+        document.getElementById("boton_iniciar").addEventListener("click", numerosAleatorios);
+        document.getElementById("siguiente_Operacion").addEventListener("click", comprobar);
+
+
+        function numerosAleatorios(){
+            document.getElementById("numero_resultado_Suma").disabled=false;
+            document.getElementById("siguiente_Operacion").disabled=false;
+            sumando_1.value= Math.floor(Math.random()*20 + 1);
+            sumando_2.value= Math.floor(Math.random()*20 + 1);
+        }
+        function comprobar(){
+            var resultado = parseInt(sumando_1.value) + parseInt(sumando_2.value);
+            var operacion = parseInt(operacion_Sumando.value);
+            if (resultado == operacion){
+                alert("Respuesta correcta :)");
+                score = score + 10;
+                scoreInput.value = score;
+                numerosAleatorios();
+            }
+            else{
+                alert("Respuesta incorrecta");
+                vidas--;
+                contadorVidas.value = "x" + vidas;
+                if(vidas == 0){
+                    alert("Ya no tienes vidas :C");
+                    document.getElementById("siguiente_Operacion").disabled=true;
+                    document.getElementById("reiniciar").style.display = "grid";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
