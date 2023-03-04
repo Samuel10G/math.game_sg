@@ -97,12 +97,8 @@ body{
 .imagen_devolver{
     width: 30px;
     position: absolute;
-    transition: 1s ease;
 }
 
-.imagen_devolver:hover{
-    width: 35px;
-}
 
 #score{
     color: black;
@@ -202,16 +198,11 @@ body{
     border: 1px solid black;
 }
 
-.ventanaSiguiente{
+.ventanaReiniciar{
     display: flex;
     justify-content: center;    
 }
 
-#siguiente{
-    margin: 20px 0 10px;
-    height: 50px;
-    /* display: none; */
-}
 #reiniciar{
     height: 50px;
     margin-top: 20px;

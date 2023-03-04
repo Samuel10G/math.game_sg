@@ -22,10 +22,13 @@ const cuadro1 = document.getElementById("form1");
 const cuadro2 = document.getElementById("form2");
 const cuadro3 = document.getElementById("form3");
 const cuadro4 = document.getElementById("form4");
-const botonSiguiente = document.getElementById("siguiente");
+// const botonSiguiente = document.getElementById("siguiente");
+
 
 
 var formPresente = [1, 2, 3, 4];
+var alternativo;
+        
 
 var vidas = 3;
 var vidaActual;
@@ -34,98 +37,116 @@ var score = 0;
 var scoreInput = document.getElementById("score");
 
 
+
+document.getElementById("contador").value = "x" + vidas;
+window.addEventListener("load", nuevoNivel);
 document.getElementById("boton_iniciar").addEventListener("click", numeroAleatorio);
 document.getElementById("comprobar").addEventListener("click", comprobarResultado);
-document.getElementById("contador").value = "x" + vidas;
-
-window.addEventListener("load", nivelSiguiente);
-
-// var alternativo; 
-// function generarAlternativo(){
-//    
-// }
-
-// function ahorasi(){
-
-//     var alternativo; 
-//     generarAlternativo();
-//     nivelSiguiente();
-// }
 
 
-// botonSiguiente.addEventListener("click", ahorasi);
-
-
- function nivelSiguiente(){
-    let alternativo = formPresente[Math.floor(Math.random()*formPresente.length)];
-    switch(alternativo){
-        case 1: cuadro1.classList.remove("formularioSecundario");
-                cuadro2.classList.add("formularioSecundario");
-                cuadro3.classList.add("formularioSecundario");
-                cuadro4.classList.add("formularioSecundario");
-                break;
-       
-        case 2: cuadro2.classList.remove("formularioSecundario");
-                cuadro1.classList.add("formularioSecundario");
-                cuadro3.classList.add("formularioSecundario");
-                cuadro4.classList.add("formularioSecundario");
-                break;
-        
-        case 3: cuadro3.classList.remove("formularioSecundario");
-                cuadro1.classList.add("formularioSecundario");
-                cuadro2.classList.add("formularioSecundario");
-                cuadro4.classList.add("formularioSecundario");
-                break;
-        
-        case 4: cuadro4.classList.remove("formularioSecundario");
-                cuadro1.classList.add("formularioSecundario");
-                cuadro2.classList.add("formularioSecundario");
-                cuadro3.classList.add("formularioSecundario");
-                break;
-    }
+function nuevoNivel(){
+    alternativo= formPresente[Math.floor(Math.random()*formPresente.length)];
+    nivelSiguiente();
  }
+     
+function nivelSiguiente() {
+    switch (alternativo) {
+        case 1: cuadro1.classList.remove("formularioSecundario");
+            cuadro2.classList.add("formularioSecundario");
+            cuadro3.classList.add("formularioSecundario");
+            cuadro4.classList.add("formularioSecundario");
+            break;
 
+        case 2: cuadro2.classList.remove("formularioSecundario");
+            cuadro1.classList.add("formularioSecundario");
+            cuadro3.classList.add("formularioSecundario");
+            cuadro4.classList.add("formularioSecundario");
+            break;
+
+        case 3: cuadro3.classList.remove("formularioSecundario");
+            cuadro1.classList.add("formularioSecundario");
+            cuadro2.classList.add("formularioSecundario");
+            cuadro4.classList.add("formularioSecundario");
+            break;
+
+        case 4: cuadro4.classList.remove("formularioSecundario");
+            cuadro1.classList.add("formularioSecundario");
+            cuadro2.classList.add("formularioSecundario");
+            cuadro3.classList.add("formularioSecundario");
+            break;
+    }
+}
 
 
 function numeroAleatorio(){
     document.getElementById("comprobar").disabled=false;
-    switch(alternativo){
-        case 1: document.getElementById("numero_resultado_Suma").disabled=false;
-                resultadoAleatorio1_Suma.value= Math.floor(Math.random()*20 + 1);
-                resultadoAleatorio2_Suma.value= Math.floor(Math.random()*20 + 1);
-                break;
-        
-        case 2: document.getElementById("numero_resultado_Resta").disabled=false;
-                resultadoAleatorio1_Resta = Math.floor(Math.random()*20 + 1);
-                resultadoAleatorio2_Resta = Math.floor(Math.random()*20 + 1);
-                if(resultadoAleatorio1_Resta > resultadoAleatorio2_Resta){
-                    document.getElementById("numero_1_Resta").value = resultadoAleatorio1_Resta;
-                    document.getElementById("numero_2_Resta").value = resultadoAleatorio2_Resta;
-                    return;
-                }
-                else{
-                    document.getElementById("numero_2_Resta").value = resultadoAleatorio1_Resta;
-                    document.getElementById("numero_1_Resta").value = resultadoAleatorio2_Resta;
-                    return;
-                }
-                break;
-        case 3: document.getElementById("numero_resultado_Multiplicacion").disabled=false;
-                resultadoAleatorio1_Multiplicacion.value= Math.floor(Math.random()*10 + 1);
-                resultadoAleatorio2_Multiplicacion.value= Math.floor(Math.random()*10 + 1);
-                break;
-        case 4: document.getElementById("numero_resultado_Division").disabled=false;
-            const divisores = [nd1 = parseInt(Math.ceil(Math.random()*9 + 1)), nd2 = parseInt(Math.ceil(Math.random()*9 + 1))];            
-            const divisor = divisores[0];
-            const residuo = divisores[1];
+    document.getElementById("numero_resultado_Suma").disabled=false
+    resultadoAleatorio1_Suma.value= Math.floor(Math.random()*20 + 1);
+    resultadoAleatorio2_Suma.value= Math.floor(Math.random()*20 + 1);
 
-            const dividiendo = divisor * residuo;
-            resultadoAleatorio1_Division.value = dividiendo;
-            resultadoAleatorio2_Division.value= divisor; 
-                break;
+    document.getElementById("numero_resultado_Multiplicacion").disabled=false;
+    resultadoAleatorio1_Multiplicacion.value= Math.floor(Math.random()*10 + 1);
+    resultadoAleatorio2_Multiplicacion.value= Math.floor(Math.random()*10 + 1);
+   
+    document.getElementById("numero_resultado_Division").disabled=false;
+    const divisores = [nd1 = parseInt(Math.ceil(Math.random()*9 + 1)), nd2 = parseInt(Math.ceil(Math.random()*9 + 1))];            
+    const divisor = divisores[0];
+    const residuo = divisores[1];
 
+    const dividiendo = divisor * residuo;
+    resultadoAleatorio1_Division.value = dividiendo;
+    resultadoAleatorio2_Division.value= divisor; 
+
+    document.getElementById("numero_resultado_Resta").disabled=false;
+    resultadoAleatorio1_Resta = Math.floor(Math.random()*20 + 1);
+    resultadoAleatorio2_Resta = Math.floor(Math.random()*20 + 1);
+    if(resultadoAleatorio1_Resta > resultadoAleatorio2_Resta){
+        document.getElementById("numero_1_Resta").value = resultadoAleatorio1_Resta;
+        document.getElementById("numero_2_Resta").value = resultadoAleatorio2_Resta;
+        return;
     }
-}
+    else{
+        document.getElementById("numero_2_Resta").value = resultadoAleatorio1_Resta;
+        document.getElementById("numero_1_Resta").value = resultadoAleatorio2_Resta;
+        return;
+    }
 
+    // switch(alternativo){
+    //     case 1: document.getElementById("numero_resultado_Suma").disabled=false
+    //             resultadoAleatorio1_Suma.value= Math.floor(Math.random()*20 + 1);
+    //             resultadoAleatorio2_Suma.value= Math.floor(Math.random()*20 + 1);
+    //             break;
+    //     case 2: document.getElementById("numero_resultado_Resta").disabled=false;
+    //             resultadoAleatorio1_Resta = Math.floor(Math.random()*20 + 1);
+    //             resultadoAleatorio2_Resta = Math.floor(Math.random()*20 + 1);
+    //             if(resultadoAleatorio1_Resta > resultadoAleatorio2_Resta){
+    //                 document.getElementById("numero_1_Resta").value = resultadoAleatorio1_Resta;
+    //                 document.getElementById("numero_2_Resta").value = resultadoAleatorio2_Resta;
+    //                 return;
+    //             }
+    //             else{
+    //                 document.getElementById("numero_2_Resta").value = resultadoAleatorio1_Resta;
+    //                 document.getElementById("numero_1_Resta").value = resultadoAleatorio2_Resta;
+    //                 return;
+    //             }
+    //             break;
+    //     case 3: document.getElementById("numero_resultado_Multiplicacion").disabled=false;
+    //             resultadoAleatorio1_Multiplicacion.value= Math.floor(Math.random()*10 + 1);
+    //             resultadoAleatorio2_Multiplicacion.value= Math.floor(Math.random()*10 + 1);
+    //             break;
+    //     case 4: document.getElementById("numero_resultado_Division").disabled=false;
+    //         const divisores = [nd1 = parseInt(Math.ceil(Math.random()*9 + 1)), nd2 = parseInt(Math.ceil(Math.random()*9 + 1))];            
+    //         const divisor = divisores[0];
+    //         const residuo = divisores[1];
+
+    //         const dividiendo = divisor * residuo;
+    //         resultadoAleatorio1_Division.value = dividiendo;
+    //         resultadoAleatorio2_Division.value= divisor; 
+    //             break;
+
+    // }
+}
+ 
 function comprobarResultado(){
     switch(alternativo){
         case 1: var operacion_Suma = parseInt(resultadoAleatorio1_Suma.value) + parseInt(resultadoAleatorio2_Suma.value);
@@ -133,12 +154,11 @@ function comprobarResultado(){
     
                 if(respuesta_Suma == operacion_Suma){
                     alert("Respuesta correcta :)");
-                    document.getElementById("siguiente").style.display="block";
-                    formPresente++;
                     score = score + 10;
                     scoreInput.value = score;
-                    nivelSiguiente();
-                    // botonSiguiente.style.display="flex"
+                    numeroAleatorio()
+                    nuevoNivel();
+                    numeroRespuesta_Suma.value="";
                     return;
                 }
                 else{
@@ -157,12 +177,11 @@ function comprobarResultado(){
     
                 if(respuesta_Resta == operacion_Resta){
                     alert("Respuesta correcta :)");
-                    document.getElementById("siguiente").style.display="block";
-                    formPresente++;
                     score = score + 10;
                     scoreInput.value = score;
-                    // botonSiguiente.style.display="flex"
-                    nivelSiguiente();
+                    numeroAleatorio()
+                    nuevoNivel();
+                    numeroRespuesta_Resta.value = "";
                     return;
                 }
                 else{
@@ -181,12 +200,11 @@ function comprobarResultado(){
     
                 if(respuesta_Multiplicacion == operacion_Multiplicacion){
                     alert("Respuesta correcta :)");
-                    document.getElementById("siguiente").style.display="block";
-                    formPresente++;
                     score = score + 10;
                     scoreInput.value = score;
-                    // botonSiguiente.style.display="flex"
-                    nivelSiguiente();
+                    numeroAleatorio()
+                    nuevoNivel();
+                    numeroRespuesta_Multiplicacion.value = "";
                     return;
                 }
                 else{
@@ -205,12 +223,11 @@ function comprobarResultado(){
     
                 if(resultado == operacion){
                     alert("Respuesta correcta :)");
-                    document.getElementById("siguiente").style.display="block";
-                    formPresente++;
                     score = score + 10;
                     scoreInput.value = score;
-                    // botonSiguiente.style.display="flex"
-                    nivelSiguiente();
+                    numeroAleatorio()
+                    nuevoNivel();
+                    numeroRespuesta_Division.value = "";
                     return;
                 }
                 else{
@@ -226,4 +243,9 @@ function comprobarResultado(){
                 }
     }
 }
+
+
+
+
+
 
