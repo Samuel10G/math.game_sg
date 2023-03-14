@@ -32,8 +32,21 @@
                 </div>
                 <input type="text" name="score" id="score">
             </div>
-            <div class="reiniciar">
+            <!-- <div class="reiniciar">
                 <input type="button" value="REINICIAR" id="reiniciar" class="botones" onclick="location.href = location.href">
+            </div> -->
+        </div>
+        <div class="sub_contenedor pantallaFinal inactivo" id="pantallaFinal">
+            <div class="pantalla-final-div">
+                <h1 class="titulo">PERDISTE TODAS TUS VIDAS</h1>
+                <div class="pantallaFinal-div">
+                    <span>TU PUNTAJE FINAL FUE DE: </span>
+                    <input type="puntajeFinal" name="puntajeFinal" id="puntajeFinal" disabled>
+                </div>
+                <div class="pantallaFinal-sub-div">
+                    <span>DA CLICK AQUI PARA VOLVER A EMPEZAR </span>
+                    <input type="button" value="REINICIAR" id="reiniciar" class="botones" onclick="location.href = location.href">
+                </div>
             </div>
         </div>
    </div>
@@ -82,6 +95,7 @@
                 alert("Respuesta correcta :)");
                 score = score + 10;
                 scoreInput.value = score;
+                operacion_Resta.value="";
                 numerosAleatorios();
             }
             else{
@@ -92,6 +106,8 @@
                     alert("Ya no tienes vidas :C");
                     document.getElementById("comprobar").disabled=true;
                     document.getElementById("reiniciar").style.display = "grid";
+                    document.getElementById("pantallaFinal").classList.remove("inactivo");
+                    document.getElementById("puntajeFinal").value = score;
                 }
             }
         }

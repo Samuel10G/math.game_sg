@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +9,10 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;1,200;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;1,200;1,700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="contenedor">
         <div class="sub_contenedor">
@@ -25,15 +28,30 @@
 
             <div class="mini_contenedor">
                 <input type="button" name="activar" id="boton_iniciar" value="INICIAR JUEGO" class="botones">
-                <input type="button" name="siguiente_Operacion" id="siguiente_Operacion" value="COMPROBAR" class="botones" disabled="">
+                <input type="button" name="siguiente_Operacion" id="siguiente_Operacion" value="COMPROBAR"
+                    class="botones" disabled="">
                 <div class="contador_corazon">
                     <input type="text" name="contador" id="contador" disabled="">
                     <img src="./imagenes/Corazon.png" alt="corazon" class="corazonVida">
                 </div>
                 <input type="text" name="score" id="score">
             </div>
-            <div class="reiniciar">
-                <input type="button" value="REINICIAR" id="reiniciar" class="botones" onclick="location.href = location.href">
+            <!-- <div class="reiniciar">
+                <input type="button" value="REINICIAR" id="reiniciar" class="botones"
+                    onclick="location.href = location.href">
+            </div> -->
+        </div>
+        <div class="sub_contenedor pantallaFinal inactivo" id="pantallaFinal">
+            <div class="pantalla-final-div">
+                <h1 class="titulo">PERDISTE TODAS TUS VIDAS</h1>
+                <div class="pantallaFinal-div">
+                    <span>TU PUNTAJE FINAL FUE DE: </span>
+                    <input type="puntajeFinal" name="puntajeFinal" id="puntajeFinal" disabled>
+                </div>
+                <div class="pantallaFinal-sub-div">
+                    <span>DA CLICK AQUI PARA VOLVER A EMPEZAR </span>
+                    <input type="button" value="REINICIAR" id="reiniciar" class="botones" onclick="location.href = location.href">
+                </div>
             </div>
         </div>
     </div>
@@ -48,39 +66,43 @@
 
         var score = 0;
         var scoreInput = document.getElementById("score");
-        document.getElementById("score").disabled=true;
+        scoreInput.value = score
+        document.getElementById("score").disabled = true;
 
 
         document.getElementById("boton_iniciar").addEventListener("click", numerosAleatorios);
         document.getElementById("siguiente_Operacion").addEventListener("click", comprobar);
 
-
-        function numerosAleatorios(){
-            document.getElementById("numero_resultado_Suma").disabled=false;
-            document.getElementById("siguiente_Operacion").disabled=false;
-            sumando_1.value= Math.floor(Math.random()*20 + 1);
-            sumando_2.value= Math.floor(Math.random()*20 + 1);
+        function numerosAleatorios() {
+            document.getElementById("numero_resultado_Suma").disabled = false;
+            document.getElementById("siguiente_Operacion").disabled = false;
+            sumando_1.value = Math.floor(Math.random() * 20 + 1);
+            sumando_2.value = Math.floor(Math.random() * 20 + 1);
         }
-        function comprobar(){
+        function comprobar() {
             var resultado = parseInt(sumando_1.value) + parseInt(sumando_2.value);
             var operacion = parseInt(operacion_Sumando.value);
-            if (resultado == operacion){
+            if (resultado == operacion) {
                 alert("Respuesta correcta :)");
                 score = score + 10;
                 scoreInput.value = score;
+                operacion_Sumando.value="";
                 numerosAleatorios();
             }
-            else{
+            else {
                 alert("Respuesta incorrecta");
                 vidas--;
                 contadorVidas.value = "x" + vidas;
-                if(vidas == 0){
+                if (vidas == 0) {
                     alert("Ya no tienes vidas :C");
-                    document.getElementById("siguiente_Operacion").disabled=true;
+                    document.getElementById("siguiente_Operacion").disabled = true;
                     document.getElementById("reiniciar").style.display = "grid";
+                    document.getElementById("pantallaFinal").classList.remove("inactivo");
+                    document.getElementById("puntajeFinal").value = score;
                 }
             }
         }
     </script>
 </body>
+
 </html>

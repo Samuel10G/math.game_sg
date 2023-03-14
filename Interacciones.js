@@ -110,41 +110,6 @@ function numeroAleatorio(){
         document.getElementById("numero_1_Resta").value = resultadoAleatorio2_Resta;
         return;
     }
-
-    // switch(alternativo){
-    //     case 1: document.getElementById("numero_resultado_Suma").disabled=false
-    //             resultadoAleatorio1_Suma.value= Math.floor(Math.random()*20 + 1);
-    //             resultadoAleatorio2_Suma.value= Math.floor(Math.random()*20 + 1);
-    //             break;
-    //     case 2: document.getElementById("numero_resultado_Resta").disabled=false;
-    //             resultadoAleatorio1_Resta = Math.floor(Math.random()*20 + 1);
-    //             resultadoAleatorio2_Resta = Math.floor(Math.random()*20 + 1);
-    //             if(resultadoAleatorio1_Resta > resultadoAleatorio2_Resta){
-    //                 document.getElementById("numero_1_Resta").value = resultadoAleatorio1_Resta;
-    //                 document.getElementById("numero_2_Resta").value = resultadoAleatorio2_Resta;
-    //                 return;
-    //             }
-    //             else{
-    //                 document.getElementById("numero_2_Resta").value = resultadoAleatorio1_Resta;
-    //                 document.getElementById("numero_1_Resta").value = resultadoAleatorio2_Resta;
-    //                 return;
-    //             }
-    //             break;
-    //     case 3: document.getElementById("numero_resultado_Multiplicacion").disabled=false;
-    //             resultadoAleatorio1_Multiplicacion.value= Math.floor(Math.random()*10 + 1);
-    //             resultadoAleatorio2_Multiplicacion.value= Math.floor(Math.random()*10 + 1);
-    //             break;
-    //     case 4: document.getElementById("numero_resultado_Division").disabled=false;
-    //         const divisores = [nd1 = parseInt(Math.ceil(Math.random()*9 + 1)), nd2 = parseInt(Math.ceil(Math.random()*9 + 1))];            
-    //         const divisor = divisores[0];
-    //         const residuo = divisores[1];
-
-    //         const dividiendo = divisor * residuo;
-    //         resultadoAleatorio1_Division.value = dividiendo;
-    //         resultadoAleatorio2_Division.value= divisor; 
-    //             break;
-
-    // }
 }
  
 function comprobarResultado(){
@@ -169,6 +134,8 @@ function comprobarResultado(){
                         alert("Ya no tienes vidas :(");
                         document.getElementById("comprobar").disabled=true;
                         document.getElementById("reiniciar").style.display="flex";
+                        document.getElementById("pantallaFinal").classList.remove("inactivo");
+                        document.getElementById("puntajeFinal").value = score;
                     }
                     return;
                 }
@@ -192,6 +159,8 @@ function comprobarResultado(){
                         alert("Ya no tienes vidas :(");
                         document.getElementById("comprobar").disabled=true;
                         document.getElementById("reiniciar").style.display="flex";
+                        document.getElementById("pantallaFinal").classList.remove("inactivo");
+                        document.getElementById("puntajeFinal").value = score;
                     }
                     return;
                 }
@@ -215,6 +184,8 @@ function comprobarResultado(){
                         alert("Ya no tienes vidas :(");
                         document.getElementById("comprobar").disabled=true;
                         document.getElementById("reiniciar").style.display="flex";
+                        document.getElementById("pantallaFinal").classList.remove("inactivo");
+                        document.getElementById("puntajeFinal").value = score;
                     }
                     return;
                 }
@@ -238,6 +209,8 @@ function comprobarResultado(){
                         alert("Ya no tienes vidas :(");
                         document.getElementById("comprobar").disabled=true;
                         document.getElementById("reiniciar").style.display="flex";
+                        document.getElementById("pantallaFinal").classList.remove("inactivo");
+                        document.getElementById("puntajeFinal").value = score;
                         return;
                     }
                 }

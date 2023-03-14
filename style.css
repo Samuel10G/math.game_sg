@@ -111,9 +111,9 @@ body{
 
 .contenedor{
     height: 100vh;
-    display: grid;
+    display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 
 .sub_contenedor{
@@ -205,8 +205,8 @@ body{
 
 #reiniciar{
     height: 50px;
-    margin-top: 20px;
-    display: none;
+    /* margin-top: 20px; */
+    /* display: none; */
 }
 
 .botones:hover{
@@ -215,3 +215,39 @@ body{
     cursor: pointer;
 }
 
+
+.pantallaFinal{
+    width: 700px;
+    height: 350px;
+    position: absolute;
+    /* opacity: 0.6; */
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.pantalla-final-div #puntajeFinal{
+    width: 80px;
+    height: 50px;
+    border-radius: 8px;
+    border: 1px solid black;
+    font-size: xx-large;
+    color: black;
+}
+
+.pantallaFinal-sub-div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pantalla-final-div{
+    border: 8px solid var(--azul-hover);
+    padding: 50px 70px;
+    border-radius: 9px;
+}
+
+.inactivo{
+    display: none;
+}
